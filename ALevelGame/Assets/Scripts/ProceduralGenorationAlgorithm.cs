@@ -8,7 +8,12 @@ using UnityEditor;
 public static class ProceduralGenerationAlgorithm
 {
 
- public static HashSet<Vector2Int> simpleRandomWalk(Vector2Int startPosition, int walkLength)
+
+
+
+
+
+/* public static HashSet<Vector2Int> simpleRandomWalk(Vector2Int startPosition, int walkLength)
     {
         HashSet<Vector2Int> path = new HashSet<Vector2Int>();
 
@@ -23,7 +28,9 @@ public static class ProceduralGenerationAlgorithm
         }
         return path;
         
-    }
+    }*/
+
+
 
 
 
