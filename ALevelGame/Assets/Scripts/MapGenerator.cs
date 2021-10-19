@@ -41,6 +41,7 @@ public class MapGenerator : MonoBehaviour
     {
 
         HashSet<Vector2Int> path = new HashSet<Vector2Int>();
+        startPosition = new Vector2Int(Random.Range(-20, 15), Random.Range(-20, 15));
 
         for (int i=0;i < nofRooms; i++)
         {
