@@ -7,9 +7,7 @@ using Random = UnityEngine.Random;
 
 public class MapGenerator : MonoBehaviour
 {
-    //private int randStart = Random int
 
-    [SerializeField]
     protected Vector2Int startPosition ;
 
     [SerializeField]
@@ -30,11 +28,6 @@ public class MapGenerator : MonoBehaviour
     [SerializeField]
     private TilemapVisualiser tilemapVisualiser;
 
-    private void Start()
-    {
-        startPosition = new Vector2Int(Random.Range(-20, 15), Random.Range(-20, 15));
-    }
-
    
 
     private HashSet<Vector2Int> generateRooms(Vector2Int startPosition)
@@ -48,8 +41,7 @@ public class MapGenerator : MonoBehaviour
             var previousPosition = startPosition;
             var startRoom = previousPosition;
 
-
-            path.Add(startPosition);
+            //path.Add(startPosition);
 
             var roomSizex = Random.Range(1, 5);
             var roomSizey = Random.Range(1, 5);
