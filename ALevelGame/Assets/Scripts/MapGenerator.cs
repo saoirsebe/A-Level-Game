@@ -34,33 +34,31 @@ public class MapGenerator : MonoBehaviour
     {
 
         HashSet<Vector2Int> path = new HashSet<Vector2Int>();
-        startPosition = new Vector2Int(Random.Range(-20, 15), Random.Range(-20, 15));
+        startPosition = new Vector2Int(Random.Range(-20, 15), Random.Range(-10, 15));
 
         for (int i=0;i < nofRooms; i++)
         {
             var previousPosition = startPosition;
             var startRoom = previousPosition;
 
-            //path.Add(startPosition);
-
-            var roomSizex = Random.Range(1, 5);
-            var roomSizey = Random.Range(1, 5);
-            roomToHashSety(path, ref previousPosition, ref startRoom, roomSizex, roomSizey);
+            var roomSizex = Random.Range(1, 7);
+            var roomSizey = Random.Range(1, 7);
+            makeRoomy(path, ref previousPosition, ref startRoom, roomSizex, roomSizey); //made first room
 
         }
         return path;
 
     }
 
-    private static void roomToHashSety(HashSet<Vector2Int> path, ref Vector2Int previousPosition, ref Vector2Int startRoom, int roomSizex, int roomSizey)
+    private static void makeRoomy(HashSet<Vector2Int> path, ref Vector2Int previousPosition, ref Vector2Int startRoom, int roomSizex, int roomSizey)
     {
         for (int i = V; i < roomSizey; i++) //adds squares along x axis going down by one each time for roomSizey
         {
-            roomToHashSetx(path, ref previousPosition, ref startRoom, roomSizex, roomSizey);
+            makeRoomx(path, ref previousPosition, ref startRoom, roomSizex, roomSizey);
         }
     }
 
-    private static void roomToHashSetx(HashSet<Vector2Int> path, ref Vector2Int previousPosition, ref Vector2Int startRoom, int roomSizex, int roomSizey)
+    private static void makeRoomx(HashSet<Vector2Int> path, ref Vector2Int previousPosition, ref Vector2Int startRoom, int roomSizex, int roomSizey)
     {
         for (int i = V; i < roomSizex; i++) //adds one right for n of roomSizex
         {
