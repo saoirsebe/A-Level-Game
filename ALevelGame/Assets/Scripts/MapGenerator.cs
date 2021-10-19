@@ -32,7 +32,7 @@ public class MapGenerator : MonoBehaviour
 
     private void Start()
     {
-        startPosition = new Vector2Int(Random.Range(0, 30), Random.Range(0, 30));
+        startPosition = new Vector2Int(Random.Range(-20, 15), Random.Range(-20, 15));
     }
 
    
