@@ -39,14 +39,14 @@ public class MapGenerator : MonoBehaviour
         for (int i=0;i < nofRooms; i++)
         {
             var previousPosition = startPosition;
-            var startRoom = previousPosition;
+            var startRoom = startPosition;
 
             var roomSizex = Random.Range(1, 7);
             var roomSizey = Random.Range(1, 7);
             makeRoomy(path, ref previousPosition, ref startRoom, roomSizex, roomSizey); //made first room
 
             var nOfAgents = Random.Range(1, 4);
-            agentPathGen(path, ref previousPosition, ref startRoom, nOfAgents);
+            agentPathGen(path, ref previousPosition, ref startRoom, nOfAgents, roomSizex, roomSizey);
 
         }
         return path;
@@ -70,12 +70,15 @@ public class MapGenerator : MonoBehaviour
             previousPosition = newPosition;
         }
         previousPosition = startRoom + new Vector2Int(0, -1);
-        startRoom = startRoom + new Vector2Int(0, -1);
+        startRoom = previousPosition;
     }
 
 
-    private static void agentPathGen(HashSet<Vector2Int> path, ref Vector2Int previousPosition, ref Vector2Int startRoom, int nOfAgents)
+    private static void agentPathGen(HashSet<Vector2Int> path, ref Vector2Int previousPosition, ref Vector2Int startRoom, int nOfAgents, int roomSizex, int roomSizey)
     {
+        string[] directions = { "left", "Right", "Up", "Down" };
+        List<string> directionsList = new List<string>(directions);
+
         for (int i = V; i < nOfAgents; i++) //adds one right for n of roomSizex
         {
 
