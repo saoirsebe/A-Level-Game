@@ -45,6 +45,9 @@ public class MapGenerator : MonoBehaviour
             var roomSizey = Random.Range(1, 7);
             makeRoomy(path, ref previousPosition, ref startRoom, roomSizex, roomSizey); //made first room
 
+            var nOfAgents = Random.Range(1, 4);
+            agentPathGen(path, ref previousPosition, ref startRoom, nOfAgents);
+
         }
         return path;
 
@@ -71,6 +74,13 @@ public class MapGenerator : MonoBehaviour
     }
 
 
+    private static void agentPathGen(HashSet<Vector2Int> path, ref Vector2Int previousPosition, ref Vector2Int startRoom, int nOfAgents)
+    {
+        for (int i = V; i < nOfAgents; i++) //adds one right for n of roomSizex
+        {
+
+        }
+    }
 
     public void runProceduralGeneration()
     {
