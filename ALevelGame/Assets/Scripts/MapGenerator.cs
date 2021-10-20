@@ -81,12 +81,19 @@ public class MapGenerator : MonoBehaviour
     {
         int[] directions = {0, 1, 2, 3};
         List<int> directionsList = new List<int>(directions);
+        var n = 3;
 
         for (int i = V; i < nOfAgents; i++) //adds one right for n of roomSizex
         {
-            var nInList = Random.Range(0, 3);
+            var nInList = Random.Range(0, n);
+            var agentDirection = directionsList.ElementAt(nInList);
             directionsList.Remove(nInList);
+            n = n - 1;
+            
+           
+            
         }
+        
     }
 
     public void runProceduralGeneration()
