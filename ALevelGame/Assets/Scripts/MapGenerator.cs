@@ -28,7 +28,10 @@ public class MapGenerator : MonoBehaviour
     [SerializeField]
     private TilemapVisualiser tilemapVisualiser;
 
-   
+    //Vector2Int[] directions = { (0,1), 1, 2, 3 };
+    //List<Vector2Int> directionsVectorsList = new List<Vector2Int>();
+    //, List<Vector2Int> directionsVectorsList
+
 
     private HashSet<Vector2Int> generateRooms(Vector2Int startPosition)
     {
@@ -76,12 +79,13 @@ public class MapGenerator : MonoBehaviour
 
     private static void agentPathGen(HashSet<Vector2Int> path, ref Vector2Int previousPosition, ref Vector2Int startRoom, int nOfAgents, int roomSizex, int roomSizey)
     {
-        string[] directions = { "left", "Right", "Up", "Down" };
-        List<string> directionsList = new List<string>(directions);
+        int[] directions = {0, 1, 2, 3};
+        List<int> directionsList = new List<int>(directions);
 
         for (int i = V; i < nOfAgents; i++) //adds one right for n of roomSizex
         {
-
+            var nInList = Random.Range(0, 3);
+            directionsList.Remove(nInList);
         }
     }
 
