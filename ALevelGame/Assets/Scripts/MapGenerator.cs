@@ -90,7 +90,6 @@ public class MapGenerator : MonoBehaviour
             directionsList.Remove(nInList);
             n = n - 1;
             
-           
             
         }
         
