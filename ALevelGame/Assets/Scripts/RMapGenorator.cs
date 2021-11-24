@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Random = UnityEngine.Random;
 
 public class RMapGenorator : MonoBehaviour
 {
@@ -66,27 +67,55 @@ public class RMapGenorator : MonoBehaviour
 
     public List<Vector2Int> shortestPathCoriidors(Vector2Int startPosition, Vector2Int endPosition)
     {
+        List<Vector2Int> corridors = new List<Vector2Int>();//List of corridors
+
         nodes = GameObject.FindGameObjectsWithTag("Door");
 
-        int doorsNotVisited = nodes.Length; //number of doors not visited
-        List<int> doorsList = new List<int>();
+        int doorsNotConnected = nodes.Length; //Nodes unconnected
+        
+
+        List<int> doorsnotUsed = new List<int>(); //List of indices of doors not conneted to others in nodes
         int n = 0;
-        for (int i = 0; i <doorsNotVisited; i++) //List of indices of doors not visited in doorsList/nodes
+        for (int i = 0; i < doorsNotConnected; i++) //Adds number 0,1,2.. to doorsnotUsed to get indeces in nodes of doors not Connected to others
         {
-            doorsList.Add(n);
+            doorsnotUsed.Add(n);
             n += 1;
         }
 
-        while (doorsNotVisited > 0)
+        while (doorsNotConnected >0)
         {
 
-            int rand = Random.Range(0, doors);
-            nodes.RemoveAt(rand);
+            //
 
+            int doorsNotVisitedLength = nodes.Length; //number of doors not visited
+            List<int> doorsnotVisited = new List<int>(); //List of indices of doors not visited in doorsList/nodes
+            int n1 = 0;
+            for (int i = 0; i < doorsNotVisitedLength; i++) //Adds number 0,1,2.. to doorsnotVisited to get indeces of doors not visited by this door in nodes
+            {
+                doorsnotVisited.Add(n);
+                n1 += 1;
+            }
+
+
+            while (doorsNotVisitedLength > 0)
+            {
+                //?int rand1 = Random.Range(0, doorsNotVisitedLength);
+                //DoorToConnect = nodes(1); //Ramdom door
+
+
+
+                doorsnotVisited.RemoveAt(rand1);
+                doorsNotVisitedLength -= 1;
+
+
+            }
+
+            doorsNotConnected -= 1; //One less door not connected
         }
 
-        List<Vector2Int> corridor = new List<Vector2Int>();
 
+
+        return corridors;
 
     }
 }
