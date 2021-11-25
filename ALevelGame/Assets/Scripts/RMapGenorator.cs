@@ -39,4 +39,8 @@ public class Door
     int x;
     int y;
     int direction;
+
+    public Door(int x, int y, int direction)
+    {
+    }
 }
