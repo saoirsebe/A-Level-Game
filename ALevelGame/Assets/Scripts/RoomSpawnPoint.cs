@@ -23,7 +23,7 @@ public class RoomSpawnPoint : MonoBehaviour
         }
       
 
-        for (door in doorsAdd)
+        foreach (GameObject door in doorsAdd)
         {
 
         }
