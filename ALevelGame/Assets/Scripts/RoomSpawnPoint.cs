@@ -11,6 +11,7 @@ public class RoomSpawnPoint : MonoBehaviour
 
     public GameObject[] objects;
     private List <GameObject> doorsAdd =  new List<GameObject>();
+    private Vector3 transPos;
 
     void Start()
     {
@@ -25,7 +26,7 @@ public class RoomSpawnPoint : MonoBehaviour
 
         foreach (GameObject door in doorsAdd)
         {
-
+            transPos = door.transform.position;
         }
 
     }
