@@ -12,8 +12,8 @@ public class RoomSpawnPoint : MonoBehaviour
     public GameObject[] objects;
     private List <GameObject> doorsAdd =  new List<GameObject>();
     private Vector3 transPos;
-    private float xCoord;
-    private float yCoord;
+    private int xCoord;
+    private int yCoord;
 
     void Start()
     {
@@ -30,8 +30,11 @@ public class RoomSpawnPoint : MonoBehaviour
         {
             transPos = door.transform.position;
 
-            xCoord = transPos.x;
-            yCoord = transPos.y;
+            xCoord = (int)transPos.x;
+            yCoord = (int)transPos.y;
+
+            doors.Append(new Door(xCoord, yCoord,0));
+
         }
 
     }
