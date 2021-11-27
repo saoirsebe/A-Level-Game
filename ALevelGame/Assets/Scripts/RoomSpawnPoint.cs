@@ -20,10 +20,16 @@ public class RoomSpawnPoint : MonoBehaviour
         int rand = Random.Range(0, objects.Length);
         Instantiate(objects[rand],transform.position, Quaternion.identity);//Spawns random room from list
 
-        foreach (GameObject doorObj in GameObject.FindGameObjectsWithTag("Door"))
+
+        GameObject[] allChildren = GetComponentsInChildren<GameObject>();
+        foreach (GameObject child in allChildren)
         {
-            doorsAdd.Add(doorObj);
+            if (child.tag == "Door")
+            {
+                doorsAdd.Add(child);
+            }
         }
+
       
 
         foreach (GameObject door in doorsAdd)
