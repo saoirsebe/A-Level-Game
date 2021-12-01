@@ -26,7 +26,7 @@ public class RoomSpawnPoint : MonoBehaviour
         if (searchTag != null)
         {
             searchTag = "Door";
-            FindObjectswithTag(searchTag,obj);
+            FindObjectswithTag(searchTag,obj,doors);
         }
 
         s1 = GetComponent<RMapGenorator>();
@@ -35,14 +35,15 @@ public class RoomSpawnPoint : MonoBehaviour
         Debug.Log("p");
     }
 
-    private void FindObjectswithTag(string _tag,GameObject obj)
+    private List<Door> FindObjectswithTag(string _tag,GameObject obj, List<Door> doors)
     {
         doors.Clear();
         Transform parent = obj.transform;
-        GetChildObject(parent, _tag);
+        GetChildObject(parent, _tag,doors);
+        return doors;
     }
 
-    private List<Door> GetChildObject(Transform parent, string _tag)
+    private List<Door> GetChildObject(Transform parent, string _tag, List<Door> doors)
     {
         for(int i = 0; i < parent.childCount; i++)
         {
