@@ -10,7 +10,6 @@ public class RoomSpawnPoint : MonoBehaviour
     private List<Door> doors = new List<Door>();
 
     public GameObject[] objects;
-    private List <GameObject> doorsAdd =  new List<GameObject>();
     private Vector3 transPos;
     private int xCoord;
     private int yCoord;
@@ -43,7 +42,7 @@ public class RoomSpawnPoint : MonoBehaviour
         GetChildObject(parent, _tag);
     }
 
-    private void GetChildObject(Transform parent, string _tag)
+    private List<Door> GetChildObject(Transform parent, string _tag)
     {
         for(int i = 0; i < parent.childCount; i++)
         {
@@ -58,6 +57,7 @@ public class RoomSpawnPoint : MonoBehaviour
                 doors.Append(new Door(xCoord, yCoord, 0));
             }
         }
+        return doors;
     }
   
     
