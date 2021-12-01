@@ -11,7 +11,7 @@ public class TilemapVisualiser : MonoBehaviour
     [SerializeField]
     private TileBase floorTile;
 
-    public void paintFloorTiles(IEnumerable<Vector2Int> floorPositions)
+    public void paintFloorTiles(IEnumerable<Vector2Int> floorPositions) //Defining method for painting
     {
         paintTiles(floorPositions, floorTilemap, floorTile);
     }
@@ -19,7 +19,7 @@ public class TilemapVisualiser : MonoBehaviour
     private void paintTiles(IEnumerable<Vector2Int> positions, Tilemap tilemap, TileBase tile)
     {
         foreach (var position in positions)
-        {
+        { 
             PaintSingleTile(tilemap, tile, position);
         }
     }
