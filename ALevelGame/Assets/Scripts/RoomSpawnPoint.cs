@@ -23,16 +23,19 @@ public class RoomSpawnPoint : MonoBehaviour
         int rand = Random.Range(0, objects.Length);
         GameObject obj = Instantiate(objects[rand],transform.position, Quaternion.identity);//Spawns random room from list
 
-        if (searchTag != null)
+        if (obj != null) 
         {
             searchTag = "Door";
             FindObjectswithTag(searchTag,obj,doors);
+            Debug.Log(doors);
+
+            s1 = GetComponent<RMapGenorator>();
+            s1.roomsList.Append(new Room(locationx, locationy, doors));
         }
 
-        s1 = GetComponent<RMapGenorator>();
-        s1.roomsList.Append(new Room(locationx, locationy, doors));
 
         Debug.Log("p");
+        
     }
 
     private List<Door> FindObjectswithTag(string _tag,GameObject obj, List<Door> doors)
@@ -48,7 +51,8 @@ public class RoomSpawnPoint : MonoBehaviour
         for(int i = 0; i < parent.childCount; i++)
         {
             Transform child = parent.GetChild(i);
-            if (child.CompareTag(_tag))
+            string tagg = child.tag;
+            if (tagg ==_tag)
             {
                 transPos = child.position;
 
