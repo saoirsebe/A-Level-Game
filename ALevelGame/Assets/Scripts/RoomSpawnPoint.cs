@@ -23,14 +23,15 @@ public class RoomSpawnPoint : MonoBehaviour
         int rand = Random.Range(0, objects.Length);
         GameObject obj = Instantiate(objects[rand],transform.position, Quaternion.identity);//Spawns random room from list
 
-        if (obj != null) 
+        if (obj != null) //and (transform.childCount > 0)
         {
             searchTag = "Door";
             FindObjectswithTag(searchTag,obj,doors);
-            Debug.Log(doors);
-
+            
             s1 = GetComponent<RMapGenorator>();
-            s1.roomsList.Append(new Room(locationx, locationy, doors));
+            List<Room> skr = s1.roomsList;
+            Debug.Log(skr);
+            skr.Append(new Room(locationx, locationy, doors));
         }
 
 
@@ -59,7 +60,7 @@ public class RoomSpawnPoint : MonoBehaviour
                 xCoord = (int)transPos.x;
                 yCoord = (int)transPos.y;
 
-                doors.Append(new Door(xCoord, yCoord, 0));
+                this.doors.Append(new Door(xCoord, yCoord, 0));
             }
         }
         return doors;
