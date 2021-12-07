@@ -5,9 +5,9 @@ using UnityEngine;
 
 public class RoomSpawnPoint : MonoBehaviour
 {
-    RMapGenorator s1;
+    public static RMapGenorator s1 = new RMapGenorator();
 
-    private List<Door> doors = new List<Door>();
+   // private List<Door> doors = new List<Door>();
 
     public GameObject[] objects;
     private Vector3 transPos;
@@ -26,12 +26,12 @@ public class RoomSpawnPoint : MonoBehaviour
         if (obj != null) //and (transform.childCount > 0)
         {
             searchTag = "Door";
+            List<Door> doors = new List<Door>();
             FindObjectswithTag(searchTag,obj,doors);
-            
-            s1 = GetComponent<RMapGenorator>();
-            List<Room> skr = s1.roomsList;
-            Debug.Log(skr);
-            skr.Append(new Room(locationx, locationy, doors));
+
+            //s1 = new RMapGenorator();
+            Room room = new Room(locationx, locationy, doors);
+            s1.AddToRoomsList(room);
         }
 
 
@@ -60,7 +60,7 @@ public class RoomSpawnPoint : MonoBehaviour
                 xCoord = (int)transPos.x;
                 yCoord = (int)transPos.y;
 
-                this.doors.Append(new Door(xCoord, yCoord, 0));
+                doors.Append(new Door(xCoord, yCoord, 0));
             }
         }
         return doors;

@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 using Random = UnityEngine.Random;
 
@@ -12,6 +13,10 @@ public class RMapGenorator : MonoBehaviour
     public Room Room;
 
 
+    public void AddToRoomsList(Room room)
+    {
+        roomsList.Append(room);
+    }
 
     public List<Vector2Int> shortestPathCoridors(Vector2Int startPosition, Vector2Int endPosition)
     {
@@ -21,6 +26,7 @@ public class RMapGenorator : MonoBehaviour
         return corridors;
 
     }
+
 }
 
 public class Room
