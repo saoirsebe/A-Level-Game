@@ -27,6 +27,15 @@ public class RMapGenorator : MonoBehaviour
 
     }
 
+
+    private void LateUpdate()
+    {
+        foreach(var x in roomsList)
+        {
+            Debug.Log(x.ToString());
+        }
+    }
+
 }
 
 public class Room

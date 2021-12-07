@@ -33,10 +33,6 @@ public class RoomSpawnPoint : MonoBehaviour
             Room room = new Room(locationx, locationy, doors);
             s1.AddToRoomsList(room);
         }
-
-
-        Debug.Log("p");
-        
     }
 
     private List<Door> FindObjectswithTag(string _tag,GameObject obj, List<Door> doors)
@@ -49,7 +45,7 @@ public class RoomSpawnPoint : MonoBehaviour
 
     private List<Door> GetChildObject(Transform parent, string _tag, List<Door> doors)
     {
-        for(int i = 0; i < parent.childCount; i++)
+        for(int i = 0; i < parent.childCount; i++) //for each child of current room, if game tag == "Door" then add x and y coordinates to the list doors
         {
             Transform child = parent.GetChild(i);
             string tagg = child.tag;
@@ -65,6 +61,5 @@ public class RoomSpawnPoint : MonoBehaviour
         }
         return doors;
     }
-  
-    
+
 }
