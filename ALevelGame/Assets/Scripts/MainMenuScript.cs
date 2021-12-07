@@ -23,13 +23,13 @@ public class MainMenuScript : MonoBehaviour
 
     public void PlayNowButton()
     {
-        // Play Now Button has been pressed, here you can initialize your game (For example Load a Scene called GameLevel etc.)
+        // Initialize game
         UnityEngine.SceneManagement.SceneManager.LoadScene("Room Generating");
     }
 
     public void InstructionsButton()
     {
-        // Show Credits Menu
+        // Show Instructions Menu
         MainMenu.SetActive(false);
         InstructionsMenu.SetActive(true);
     }
