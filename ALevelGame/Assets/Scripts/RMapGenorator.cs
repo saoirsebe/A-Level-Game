@@ -32,7 +32,7 @@ public class RMapGenorator : MonoBehaviour
     {
         foreach(var x in roomsList)
         {
-            Debug.Log(x.ToString());
+            Debug.Log(x);
         }
     }
 

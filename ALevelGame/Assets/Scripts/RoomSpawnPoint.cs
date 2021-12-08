@@ -5,7 +5,8 @@ using UnityEngine;
 
 public class RoomSpawnPoint : MonoBehaviour
 {
-    public static RMapGenorator s1 = new RMapGenorator();
+    
+    
 
    // private List<Door> doors = new List<Door>();
 
@@ -15,23 +16,32 @@ public class RoomSpawnPoint : MonoBehaviour
     private int yCoord;
     private string searchTag;
 
+    
+
+    public GameObject s1;
+    private RMapGenorator s11;
+
     void Start()
     {
+        //s1 = FindObjectOfType(typeof(RMapGenorator)) as RMapGenorator;
+
         int locationx = (int)transform.position.x;
         int locationy = (int)transform.position.y;
 
         int rand = Random.Range(0, objects.Length);
         GameObject obj = Instantiate(objects[rand],transform.position, Quaternion.identity);//Spawns random room from list
 
-        if (obj != null) //and (transform.childCount > 0)
+        if (s1 != null) //and (transform.childCount > 0)
         {
             searchTag = "Door";
             List<Door> doors = new List<Door>();
             FindObjectswithTag(searchTag,obj,doors);
 
             //s1 = new RMapGenorator();
+            s11=s1.GetComponent<RMapGenorator>();
             Room room = new Room(locationx, locationy, doors);
-            s1.AddToRoomsList(room);
+            
+            s11.AddToRoomsList(room);
         }
     }
 
