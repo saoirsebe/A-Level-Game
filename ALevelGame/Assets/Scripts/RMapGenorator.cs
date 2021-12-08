@@ -45,20 +45,20 @@ public class Room
 {
     int x;
     int y;
-    List<Door> doors;
+    List<ObjectLocation> doors;
 
-    public Room(int x, int y, List<Door> doors)
+    public Room(int x, int y, List<ObjectLocation> doors)
     {
     }
 }
 
-public class Door
+public class ObjectLocation
 {
     int x;
     int y;
     int direction;
 
-    public Door(int x, int y, int direction)
+    public ObjectLocation(int x, int y, int direction)
     {
     }
 }
