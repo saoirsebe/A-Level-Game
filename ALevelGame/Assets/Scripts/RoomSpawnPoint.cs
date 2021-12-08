@@ -31,7 +31,7 @@ public class RoomSpawnPoint : MonoBehaviour
         {
             searchTagDoor = "Door";
             List<ObjectLocation> doors = new List<ObjectLocation>();
-            FindObjectswithTag(searchTagDoor, obj,doors);//Adds Door location of each door to the list doors
+            doors = FindObjectswithTag(searchTagDoor, obj,doors);//Adds Door location of each door to the list doors
 
             s11=s1.GetComponent<RMapGenorator>();
             Room room = new Room(locationx, locationy, doors);
@@ -50,9 +50,9 @@ public class RoomSpawnPoint : MonoBehaviour
         listToAdd.Clear();
         Transform parent = obj.transform;
 
-        GetChildObject(parent, _tag, listToAdd);
+        return GetChildObject(parent, _tag, listToAdd);
         
-        return listToAdd;
+        
   
     }
 

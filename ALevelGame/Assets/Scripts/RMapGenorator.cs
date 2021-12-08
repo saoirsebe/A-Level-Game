@@ -33,9 +33,15 @@ public class RMapGenorator : MonoBehaviour
 
     private void LateUpdate()
     {
-        foreach(var x in roomsList)
+        foreach(var Roomx in roomsList)
         {
-            Debug.Log(x);
+            List<ObjectLocation> doorsListCheck = Roomx.doors;
+
+            foreach(var Doorx in doorsListCheck)
+            {
+                int xval = Doorx.x;
+                Debug.Log($"Door x:{xval}");
+            }
         }
     }
 
@@ -45,7 +51,7 @@ public class Room
 {
     int x;
     int y;
-    List<ObjectLocation> doors;
+    public List<ObjectLocation> doors;
 
     public Room(int x, int y, List<ObjectLocation> doors)
     {
@@ -54,7 +60,7 @@ public class Room
 
 public class ObjectLocation
 {
-    int x;
+    public int x;
     int y;
     int direction;
 
