@@ -37,37 +37,40 @@ public class RoomSpawnPoint : MonoBehaviour
             s11.AddToRoomsList(room);
 
 
+            List<ObjectLocation> walls = new List<ObjectLocation>();
             searchTagWallTile = "Wall Tile";
-
+            FindObjectswithTag(searchTagWallTile, obj, walls);
 
         }
     }
 
-    private List<ObjectLocation> FindObjectswithTag(string _Doortag,GameObject obj, List<ObjectLocation> doors)
+    private List<ObjectLocation> FindObjectswithTag(string _tag,GameObject obj, List<ObjectLocation> listToAdd)
     {
-        doors.Clear();
+        listToAdd.Clear();
         Transform parent = obj.transform;
-        GetChildObject(parent, _Doortag,doors);
-        return doors;
+        GetChildObject(parent, _tag, listToAdd);
+        
+        return listToAdd;
+  
     }
 
-    private List<ObjectLocation> GetChildObject(Transform parent, string _Doortag, List<ObjectLocation> doors)
+    private List<ObjectLocation> GetChildObject(Transform parent, string _tag, List<ObjectLocation> listToAdd)
     {
         for(int i = 0; i < parent.childCount; i++) //for each child of current room, if game tag == "Door" then add x and y coordinates to the list doors
         {
             Transform child = parent.GetChild(i);
             string tagg = child.tag;
-            if (tagg ==_Doortag)
+            if (tagg ==_tag)
             {
                 transPos = child.position;
 
                 xCoord = (int)transPos.x;
                 yCoord = (int)transPos.y;
 
-                doors.Append(new ObjectLocation(xCoord, yCoord, 0));
+                listToAdd.Append(new ObjectLocation(xCoord, yCoord, 0));
             }
         }
-        return doors;
+        return listToAdd;
     }
 
 }
