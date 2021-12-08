@@ -16,6 +16,9 @@ public class RMapGenorator : MonoBehaviour
     public void AddToRoomsList(Room room)
     {
         roomsList.Append(room);
+
+        Debug.Log("p");
+   
     }
 
     public List<Vector2Int> shortestPathCoridors(Vector2Int startPosition, Vector2Int endPosition)
