@@ -5,10 +5,6 @@ using UnityEngine;
 
 public class RoomSpawnPoint : MonoBehaviour
 {
-    
-    
-
-   // private List<Door> doors = new List<Door>();
 
     public GameObject[] objects;
     private Vector3 transPos;
@@ -34,7 +30,7 @@ public class RoomSpawnPoint : MonoBehaviour
         if (s1 != null) 
         {
             searchTagDoor = "Door";
-            List<Door> doors = new List<Door>();
+            List<ObjectLocation> doors = new List<ObjectLocation>();
             FindObjectswithTag(searchTagDoor, obj,doors);
             s11=s1.GetComponent<RMapGenorator>();
             Room room = new Room(locationx, locationy, doors);
@@ -43,10 +39,11 @@ public class RoomSpawnPoint : MonoBehaviour
 
             searchTagWallTile = "Wall Tile";
 
+
         }
     }
 
-    private List<Door> FindObjectswithTag(string _Doortag,GameObject obj, List<Door> doors)
+    private List<ObjectLocation> FindObjectswithTag(string _Doortag,GameObject obj, List<ObjectLocation> doors)
     {
         doors.Clear();
         Transform parent = obj.transform;
@@ -54,20 +51,20 @@ public class RoomSpawnPoint : MonoBehaviour
         return doors;
     }
 
-    private List<Door> GetChildObject(Transform parent, string _Doortag, List<Door> doors)
+    private List<ObjectLocation> GetChildObject(Transform parent, string _Doortag, List<ObjectLocation> doors)
     {
         for(int i = 0; i < parent.childCount; i++) //for each child of current room, if game tag == "Door" then add x and y coordinates to the list doors
         {
             Transform child = parent.GetChild(i);
-            string Doortagg = child.tag;
-            if (Doortagg ==_Doortag)
+            string tagg = child.tag;
+            if (tagg ==_Doortag)
             {
                 transPos = child.position;
 
                 xCoord = (int)transPos.x;
                 yCoord = (int)transPos.y;
 
-                doors.Append(new Door(xCoord, yCoord, 0));
+                doors.Append(new ObjectLocation(xCoord, yCoord, 0));
             }
         }
         return doors;
