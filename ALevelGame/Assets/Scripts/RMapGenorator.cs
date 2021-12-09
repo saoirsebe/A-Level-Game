@@ -24,6 +24,11 @@ public class RMapGenorator : MonoBehaviour
             wallsList.Add(wallTile);  
         }
     }
+
+    private void LateUpdate()
+    {
+        
+    }
 }
 
 public class Room
@@ -51,5 +56,17 @@ public class ObjectLocation
         _x = x;
         _y = y;
         _direction = direction;
+    }
+}
+
+public class ArraySquareWeights
+{
+    int _weightOfMoving;
+    int _SteppingWeight;
+
+    public ArraySquareWeights(int weightOfMoving,int SteppingWeight)
+    {
+        _weightOfMoving = weightOfMoving;
+        _SteppingWeight = SteppingWeight;
     }
 }
