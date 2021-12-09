@@ -32,25 +32,14 @@ public class RMapGenorator : MonoBehaviour
     }
 
 
-    private void LateUpdate()
-    {
-        foreach(var Roomx in roomsList)
-        {
-            List<ObjectLocation> doorsListCheck = Roomx.doors;
-
-            foreach(var Doorx in doorsListCheck)
-            {
-                int xval = Doorx.x;
-                Debug.Log($"Door x:{xval}");
-            }
-        }
-    }
+   
 
     internal void AddToWallsList(List<ObjectLocation> walls)
     {
         foreach (var wallTile in walls)
         {
             wallsList.Add(wallTile);
+            Debug.Log(wallTile.x);
         }
         
     }
@@ -58,22 +47,22 @@ public class RMapGenorator : MonoBehaviour
 
 public class Room
 {
-    int x;
-    int y;
+    float x;
+    float y;
     public List<ObjectLocation> doors;
 
-    public Room(int x, int y, List<ObjectLocation> doors)
+    public Room(float x, float y, List<ObjectLocation> doors)
     {
     }
 }
 
 public class ObjectLocation
 {
-    public int x;
-    int y;
-    int direction;
+    public float x;
+    float y;
+    float direction;
 
-    public ObjectLocation(int x, int y, int direction)
+    public ObjectLocation(float x, float y, float direction)
     {
     }
 }

@@ -41,7 +41,7 @@ public class RoomSpawnPoint : MonoBehaviour
             searchTagWallTile = "Wall Tile";
             List<ObjectLocation> walls = new List<ObjectLocation>();
             walls = FindObjectswithTag(searchTagWallTile, obj, walls);//Adds Wall location of each Wall to the list walls
-            s11.AddToWallsList(walls);
+            s11.AddToWallsList(walls);//Adds wall tiles in walls to total wallsList
         }
     }
 
@@ -51,9 +51,7 @@ public class RoomSpawnPoint : MonoBehaviour
         Transform parent = obj.transform;
 
         return GetChildObject(parent, _tag, listToAdd);
-        
-        
-  
+ 
     }
 
     private List<ObjectLocation> GetChildObject(Transform parent, string _tag, List<ObjectLocation> listToAdd)
@@ -66,8 +64,8 @@ public class RoomSpawnPoint : MonoBehaviour
             {
                 transPos = childx.position;
 
-                xCoord = (int)transPos.x;
-                yCoord = (int)transPos.y;
+                xCoord = (int)(float)transPos.x;
+                yCoord = (int)(float)transPos.y;
 
                 listToAdd.Add(new ObjectLocation(xCoord, yCoord, 0));
             }
