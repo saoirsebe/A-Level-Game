@@ -11,11 +11,12 @@ public class RMapGenorator : MonoBehaviour
     public GameObject[] nodes;
     public List<Room> roomsList = new List<Room>();
     public Room Room;
+    public List<ObjectLocation> wallsList = new List<ObjectLocation>();
 
 
     public void AddToRoomsList(Room room)
     {
-        roomsList.Append(room);
+        roomsList.Add(room);
 
         Debug.Log("p");
    
@@ -45,6 +46,14 @@ public class RMapGenorator : MonoBehaviour
         }
     }
 
+    internal void AddToWallsList(List<ObjectLocation> walls)
+    {
+        foreach (wallTile in walls)
+        {
+            wallsList.Add(wallTile);
+        }
+        
+    }
 }
 
 public class Room

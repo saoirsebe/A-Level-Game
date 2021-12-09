@@ -40,8 +40,8 @@ public class RoomSpawnPoint : MonoBehaviour
 
             searchTagWallTile = "Wall Tile";
             List<ObjectLocation> walls = new List<ObjectLocation>();
-            FindObjectswithTag(searchTagWallTile, obj, walls);//Adds Wall location of each Wall to the list walls
-
+            walls = FindObjectswithTag(searchTagWallTile, obj, walls);//Adds Wall location of each Wall to the list walls
+            s11.AddToWallsList(walls);
         }
     }
 
