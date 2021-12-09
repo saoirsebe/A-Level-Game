@@ -7,62 +7,49 @@ using Random = UnityEngine.Random;
 
 public class RMapGenorator : MonoBehaviour
 {
-
     public GameObject[] nodes;
     public List<Room> roomsList = new List<Room>();
     public Room Room;
     public List<ObjectLocation> wallsList = new List<ObjectLocation>();
 
-
     public void AddToRoomsList(Room room)
     {
         roomsList.Add(room);
-
-        Debug.Log("p");
-   
     }
 
-    public List<Vector2Int> shortestPathCoridors(Vector2Int startPosition, Vector2Int endPosition)
-    {
-        List<Vector2Int> corridors = new List<Vector2Int>();//List of corridors
-
-
-        return corridors;
-
-    }
-
-
-   
-
-    internal void AddToWallsList(List<ObjectLocation> walls)
+    public void AddToWallsList(List<ObjectLocation> walls)
     {
         foreach (var wallTile in walls)
         {
-            wallsList.Add(wallTile);
-            Debug.Log(wallTile.x);
+            wallsList.Add(wallTile);  
         }
-        
     }
 }
 
 public class Room
 {
-    float x;
-    float y;
-    public List<ObjectLocation> doors;
+    float _x;
+    float _y;
+    List<ObjectLocation> _doors;
 
     public Room(float x, float y, List<ObjectLocation> doors)
     {
+        _x = x;
+        _y = y;
+        _doors = doors;
     }
 }
 
 public class ObjectLocation
 {
-    public float x;
-    float y;
-    float direction;
+    float _x;
+    float _y;
+    float _direction;
 
     public ObjectLocation(float x, float y, float direction)
     {
+        _x = x;
+        _y = y;
+        _direction = direction;
     }
 }
