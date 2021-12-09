@@ -60,11 +60,11 @@ public class RoomSpawnPoint : MonoBehaviour
     {
         for(int i = 0; i < parent.childCount; i++) //for each child of current room, if game tag == "Door" then add x and y coordinates to the list doors
         {
-            Transform child = parent.GetChild(i);
-            string tagg = child.tag;
+            Transform childx = parent.GetChild(i);
+            string tagg = childx.tag;
             if (tagg ==_tag)
             {
-                transPos = child.position;
+                transPos = childx.position;
 
                 xCoord = (int)transPos.x;
                 yCoord = (int)transPos.y;
