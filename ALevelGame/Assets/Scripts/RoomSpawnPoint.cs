@@ -8,8 +8,8 @@ public class RoomSpawnPoint : MonoBehaviour
 
     public GameObject[] objects;
     private Vector3 transPos;
-    private int xCoord;
-    private int yCoord;
+    private float xCoord;
+    private float yCoord;
     private string searchTagDoor;
     private string searchTagWallTile;
 
@@ -64,8 +64,8 @@ public class RoomSpawnPoint : MonoBehaviour
             {
                 transPos = childx.position;
 
-                xCoord = (int)(float)transPos.x;
-                yCoord = (int)(float)transPos.y;
+                xCoord = (float)transPos.x;
+                yCoord = (float)transPos.y;
 
                 listToAdd.Add(new ObjectLocation(xCoord, yCoord, 0));
             }
