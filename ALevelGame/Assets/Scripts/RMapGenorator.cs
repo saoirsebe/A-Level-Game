@@ -48,7 +48,7 @@ public class RMapGenorator : MonoBehaviour
 
     internal void AddToWallsList(List<ObjectLocation> walls)
     {
-        foreach (wallTile in walls)
+        foreach (var wallTile in walls)
         {
             wallsList.Add(wallTile);
         }
