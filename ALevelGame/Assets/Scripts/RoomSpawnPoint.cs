@@ -69,7 +69,7 @@ public class RoomSpawnPoint : MonoBehaviour
                 xCoord = (int)transPos.x;
                 yCoord = (int)transPos.y;
 
-                listToAdd.Append(new ObjectLocation(xCoord, yCoord, 0));
+                listToAdd.Add(new ObjectLocation(xCoord, yCoord, 0));
             }
         }
         return listToAdd;
