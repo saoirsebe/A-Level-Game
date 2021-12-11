@@ -12,6 +12,7 @@ public class RMapGenorator : MonoBehaviour
     public Room Room;
     public List<ObjectLocation> wallsList = new List<ObjectLocation>();
     private int[,] WeightToMoveArray = new int [50,50];
+    public const int maxint = 2147483647;
 
     public void AddToRoomsList(Room room)
     {
@@ -28,22 +29,12 @@ public class RMapGenorator : MonoBehaviour
 
     private void LateUpdate()
     {
-        for (int x = 0; x < 100; x++)
+        foreach(var wall in wallsList)
         {
-            for (int y = 0; y < 100; y++)
-            {
-                foreach(var wall in wallsList)
-                {
-                    int wallx = wall._x;
-                    int wally = wall._y;
+            int wallx = wall._x;
+            int wally = wall._y;
 
-                    if (WeightToMoveArray[x, y] == [wallx, wally])
-                    {
-
-                    }
-
-                }
-            }
+            WeightToMoveArray[wallx, wally] = maxint;
             
         }
     }
