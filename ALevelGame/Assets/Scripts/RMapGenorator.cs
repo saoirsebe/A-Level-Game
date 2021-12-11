@@ -11,6 +11,7 @@ public class RMapGenorator : MonoBehaviour
     public List<Room> roomsList = new List<Room>();
     public Room Room;
     public List<ObjectLocation> wallsList = new List<ObjectLocation>();
+    private int[,] WeightToMoveArray;
 
     public void AddToRoomsList(Room room)
     {
@@ -27,17 +28,20 @@ public class RMapGenorator : MonoBehaviour
 
     private void LateUpdate()
     {
-        
+        foreach (int element in WeightToMoveArray)
+        {
+            
+        }
     }
 }
 
 public class Room
 {
-    float _x;
-    float _y;
+    int _x;
+    int _y;
     List<ObjectLocation> _doors;
 
-    public Room(float x, float y, List<ObjectLocation> doors)
+    public Room(int x, int y, List<ObjectLocation> doors)
     {
         _x = x;
         _y = y;
@@ -47,11 +51,11 @@ public class Room
 
 public class ObjectLocation
 {
-    float _x;
-    float _y;
-    float _direction;
+    int _x;
+    int _y;
+    int _direction;
 
-    public ObjectLocation(float x, float y, float direction)
+    public ObjectLocation(int x, int y, int direction)
     {
         _x = x;
         _y = y;
@@ -61,11 +65,15 @@ public class ObjectLocation
 
 public class ArraySquareWeights
 {
+    int _x;
+    int _y;
     int _weightOfMoving;
     int _SteppingWeight;
 
-    public ArraySquareWeights(int weightOfMoving,int SteppingWeight)
+    public ArraySquareWeights(int x, int y, int weightOfMoving,int SteppingWeight)
     {
+        _x = x;
+        _y = y;
         _weightOfMoving = weightOfMoving;
         _SteppingWeight = SteppingWeight;
     }
