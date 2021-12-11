@@ -65,8 +65,8 @@ public class Room
 
 public class ObjectLocation
 {
-    int _x;
-    int _y;
+    public int _x;
+    public int _y;
     int _direction;
 
     public ObjectLocation(int x, int y, int direction)
