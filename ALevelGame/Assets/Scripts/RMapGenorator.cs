@@ -11,7 +11,7 @@ public class RMapGenorator : MonoBehaviour
     public List<Room> roomsList = new List<Room>();
     public Room Room;
     public List<ObjectLocation> wallsList = new List<ObjectLocation>();
-    private int[,] WeightToMoveArray;
+    private int[,] WeightToMoveArray = new int [50,50];
 
     public void AddToRoomsList(Room room)
     {
@@ -30,6 +30,14 @@ public class RMapGenorator : MonoBehaviour
     {
         foreach (int element in WeightToMoveArray)
         {
+            foreach (<ObjectLocation> wall in wallsList)
+            {
+                if (element[x, y] == [wall._x,wall._y])
+                {
+
+
+                }
+            }
             
         }
     }
