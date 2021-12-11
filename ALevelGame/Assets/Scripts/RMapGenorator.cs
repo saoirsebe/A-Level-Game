@@ -28,13 +28,19 @@ public class RMapGenorator : MonoBehaviour
 
     private void LateUpdate()
     {
-        foreach (int element in WeightToMoveArray)
+        for (int x = 0; x < 100; x++)
         {
-            foreach (<ObjectLocation> wall in wallsList)
+            for (int y = 0; y < 100; y++)
             {
-                if (element[x, y] == [wall._x,wall._y])
+                foreach(var wall in wallsList)
                 {
+                    int wallx = wall._x;
+                    int wally = wall._y;
 
+                    if (WeightToMoveArray[x, y] == [wallx, wally])
+                    {
+
+                    }
 
                 }
             }
