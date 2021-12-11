@@ -27,17 +27,25 @@ public class RMapGenorator : MonoBehaviour
         }
     }
 
-    private void LateUpdate()
+    void Start()
     {
-        foreach(var wall in wallsList)
+        waitTillEnd();
+
+        foreach (var wall in wallsList)
         {
             int wallx = wall._x;
             int wally = wall._y;
 
             WeightToMoveArray[wallx, wally] = maxint;
-            
+
         }
     }
+
+    IEnumerator waitTillEnd()
+    {
+        yield return new WaitForEndOfFrame();
+    }
+
 }
 
 public class Room
