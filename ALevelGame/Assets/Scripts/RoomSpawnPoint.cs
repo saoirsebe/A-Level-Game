@@ -33,8 +33,8 @@ public class RoomSpawnPoint : MonoBehaviour
             searchTagDoor = "Door";
             List<ObjectLocation> doors = new List<ObjectLocation>();
             doors = FindObjectswithTag(searchTagDoor, obj,doors);//Adds Door location of each door to the list doors
-
             s11=s1.GetComponent<RMapGenorator>();
+            s11.doorsToConnect += doors.Count;
             Room room = new Room(locationx, locationy, doors);
             s11.AddToRoomsList(room);//Adds room location and list of its doors to roomsList
 
@@ -43,8 +43,8 @@ public class RoomSpawnPoint : MonoBehaviour
             List<ObjectLocation> walls = new List<ObjectLocation>();
             walls = FindObjectswithTag(searchTagWallTile, obj, walls);//Adds Wall location of each Wall to the list walls
             s11.AddToWallsList(walls);//Adds wall tiles in walls to total wallsList
-            s11.RunGenerator = true;
             s11.MakeWeightToMoveArray();
+            s11.roomsMade += 1;
         }
         
     }

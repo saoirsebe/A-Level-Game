@@ -13,8 +13,10 @@ public class RMapGenorator : MonoBehaviour
     public List<ObjectLocation> wallsList = new List<ObjectLocation>();
     private int[,] WeightToMoveArray = new int [50,50];
     public const int maxint = 2147483647;
+    public int roomsMade;
+    public int doorsToConnect;
 
-    public bool RunGenerator=false;
+    Queue<ObjectLocation> LocationsToVisit = new Queue<ObjectLocation>();
 
 
     public void AddToRoomsList(Room room)
@@ -31,20 +33,6 @@ public class RMapGenorator : MonoBehaviour
     }
 
     void Start()
-    { 
-        StartCoroutine(waitTillEnd());
-    }
-
-    IEnumerator waitTillEnd()
-    {
-        //yield return new WaitForEndOfFrame();
-        //yield return new WaitForSeconds(10f);
-        yield return new WaitUntil(() => RunGenerator);
-
-        MakeWeightToMoveArray();
-    }
-
-    public void MakeWeightToMoveArray()
     {
         for (int x = 0; x < 50; x++)
         {
@@ -55,13 +43,30 @@ public class RMapGenorator : MonoBehaviour
         }
 
 
+        while (roomsMade == 9 & doorsToConnect > 0)
+        {
+            int rand = Random.Range(0, roomsList.Count);
+            Room roomStart = roomsList(rand);
+
+            MakeDistanceFromEndArray(roomStart);
+        }
+
+    }
+
+    public void MakeWeightToMoveArray()
+    {
         foreach (var wall in wallsList)
         {
             int wallx = wall._x;
             int wally = wall._y;
-
             WeightToMoveArray[wallx, wally] = maxint;
         }
+        
+    }
+
+    private void MakeDistanceFromEndArray()
+    {
+        visitingTile = roomStart;
     }
 }
 
