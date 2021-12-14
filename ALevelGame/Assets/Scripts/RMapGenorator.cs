@@ -31,6 +31,15 @@ public class RMapGenorator : MonoBehaviour
     {
         waitTillEnd();
 
+        for (int x = 0; x < 100; x++)
+        {
+            for (int y = 0; y < 100; y++)
+            {
+                WeightToMoveArray[x, y] = 1;
+            }
+        }   
+        
+
         foreach (var wall in wallsList)
         {
             int wallx = wall._x;
