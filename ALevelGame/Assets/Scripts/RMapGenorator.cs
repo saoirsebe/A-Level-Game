@@ -14,6 +14,9 @@ public class RMapGenorator : MonoBehaviour
     private int[,] WeightToMoveArray = new int [50,50];
     public const int maxint = 2147483647;
 
+    public bool RunGenerator=false;
+
+
     public void AddToRoomsList(Room room)
     {
         roomsList.Add(room);
@@ -28,17 +31,29 @@ public class RMapGenorator : MonoBehaviour
     }
 
     void Start()
-    {
-        waitTillEnd();
+    { 
+        StartCoroutine(waitTillEnd());
+    }
 
-        for (int x = 0; x < 100; x++)
+    IEnumerator waitTillEnd()
+    {
+        //yield return new WaitForEndOfFrame();
+        //yield return new WaitForSeconds(10f);
+        yield return new WaitUntil(() => RunGenerator);
+
+        MakeWeightToMoveArray();
+    }
+
+    public void MakeWeightToMoveArray()
+    {
+        for (int x = 0; x < 50; x++)
         {
-            for (int y = 0; y < 100; y++)
+            for (int y = 0; y < 50; y++)
             {
                 WeightToMoveArray[x, y] = 1;
             }
-        }   
-        
+        }
+
 
         foreach (var wall in wallsList)
         {
@@ -46,15 +61,8 @@ public class RMapGenorator : MonoBehaviour
             int wally = wall._y;
 
             WeightToMoveArray[wallx, wally] = maxint;
-
         }
     }
-
-    IEnumerator waitTillEnd()
-    {
-        yield return new WaitForEndOfFrame();
-    }
-
 }
 
 public class Room

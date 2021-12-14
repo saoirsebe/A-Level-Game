@@ -13,7 +13,7 @@ public class RoomSpawnPoint : MonoBehaviour
     private string searchTagDoor;
     private string searchTagWallTile;
 
-
+    public bool RunGenerator = false;
 
     public GameObject s1;
     private RMapGenorator s11;
@@ -21,6 +21,7 @@ public class RoomSpawnPoint : MonoBehaviour
     void Start()
     {
         
+
         int locationx = (int)transform.position.x;
         int locationy = (int)transform.position.y;
 
@@ -42,7 +43,10 @@ public class RoomSpawnPoint : MonoBehaviour
             List<ObjectLocation> walls = new List<ObjectLocation>();
             walls = FindObjectswithTag(searchTagWallTile, obj, walls);//Adds Wall location of each Wall to the list walls
             s11.AddToWallsList(walls);//Adds wall tiles in walls to total wallsList
+            s11.RunGenerator = true;
+            s11.MakeWeightToMoveArray();
         }
+        
     }
 
     private List<ObjectLocation> FindObjectswithTag(string _tag,GameObject obj, List<ObjectLocation> listToAdd)
