@@ -14,10 +14,12 @@ public class RMapGenorator : MonoBehaviour
     private int[,] WeightToMoveArray = new int [50,50];
     public const int maxint = 2147483647;
     public int roomsMade;
-    public int doorsToConnect;
 
     Queue<ObjectLocation> LocationsToVisit = new Queue<ObjectLocation>();
-
+    private GameObject startRoom;
+    private Vector3 transPos;
+    private int xCoord;
+    private int yCoord;
 
     public void AddToRoomsList(Room room)
     {
@@ -43,10 +45,13 @@ public class RMapGenorator : MonoBehaviour
         }
 
 
-        while (roomsMade == 9 & doorsToConnect > 0)
+        while (roomsMade == 9)
         {
             int rand = Random.Range(0, roomsList.Count);
-            Room roomStart = roomsList(rand);
+
+            startRoom = GameObject.FindGameObjectWithTag("StartRoom");
+            string tag = "Door";
+            GetChildObject(startRoom,tag);
 
             MakeDistanceFromEndArray(roomStart);
         }
@@ -64,7 +69,23 @@ public class RMapGenorator : MonoBehaviour
         
     }
 
-    private void MakeDistanceFromEndArray()
+    private (int,int) GetChildObject(Transform parent, string _tag)
+    {
+        for (int i = 0; i < parent.childCount; i++) //for each child of start room, if game tag == "Door" then return x and y coordinates
+        {
+            Transform childx = parent.GetChild(i);
+            string tagg = childx.tag;
+            if (tagg == _tag)
+            {
+                transPos = childx.position;
+                xCoord = (int)transPos.x;
+                yCoord = (int)transPos.y;
+            }
+        }
+        return (xCoord, yCoord);
+    }
+
+    private void MakeDistanceFromEndArray(Room roomStart)
     {
         visitingTile = roomStart;
     }
@@ -98,18 +119,5 @@ public class ObjectLocation
     }
 }
 
-public class ArraySquareWeights
-{
-    int _x;
-    int _y;
-    int _weightOfMoving;
-    int _SteppingWeight;
 
-    public ArraySquareWeights(int x, int y, int weightOfMoving,int SteppingWeight)
-    {
-        _x = x;
-        _y = y;
-        _weightOfMoving = weightOfMoving;
-        _SteppingWeight = SteppingWeight;
-    }
-}
+

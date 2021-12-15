@@ -34,7 +34,7 @@ public class RoomSpawnPoint : MonoBehaviour
             List<ObjectLocation> doors = new List<ObjectLocation>();
             doors = FindObjectswithTag(searchTagDoor, obj,doors);//Adds Door location of each door to the list doors
             s11=s1.GetComponent<RMapGenorator>();
-            s11.doorsToConnect += doors.Count;
+        
             Room room = new Room(locationx, locationy, doors);
             s11.AddToRoomsList(room);//Adds room location and list of its doors to roomsList
 
