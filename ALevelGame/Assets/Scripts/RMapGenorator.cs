@@ -16,10 +16,14 @@ public class RMapGenorator : MonoBehaviour
     public int roomsMade;
 
     Queue<ObjectLocation> LocationsToVisit = new Queue<ObjectLocation>();
-    private GameObject startRoom;
+    private GameObject startRoomObj;
     private Vector3 transPos;
     private int xCoord;
     private int yCoord;
+    private int xstart;
+    private int ystart;
+    private int xend;
+    private int yend;
 
     public void AddToRoomsList(Room room)
     {
@@ -45,17 +49,29 @@ public class RMapGenorator : MonoBehaviour
         }
 
 
-        while (roomsMade == 9)
+        if (roomsMade == 9)
         {
-            int rand = Random.Range(0, roomsList.Count);
-
-            startRoom = GameObject.FindGameObjectWithTag("StartRoom");
+            startRoomObj = GameObject.FindGameObjectWithTag("StartRoom");
+            Transform startRoomTrans = startRoomObj.transform;
             string tag = "Door";
-            GetChildObject(startRoom,tag);
-
-            MakeDistanceFromEndArray(roomStart);
+            (xstart, ystart) = GetChildObject(startRoomTrans, tag);
+            PickEnd(startRoomObj, xstart, ystart);
         }
 
+    }
+
+    private void PickEnd(Room startRoomObj, int xstart, int ystart)
+    {
+        throw new NotImplementedException();
+    }
+
+    private PickStart ()
+    {
+        int rand = Random.Range(0, roomsList.Count);
+        Room roomn = roomsList[rand];
+        List<ObjectLocation> doorsn = roomn.doors;
+
+        MakeDistanceFromEndArray(xstart, ystart, xend, yend);
     }
 
     public void MakeWeightToMoveArray()
@@ -69,7 +85,7 @@ public class RMapGenorator : MonoBehaviour
         
     }
 
-    private (int,int) GetChildObject(Transform parent, string _tag)
+    private (int xstart,int ystart) GetChildObject(Transform parent, string _tag)
     {
         for (int i = 0; i < parent.childCount; i++) //for each child of start room, if game tag == "Door" then return x and y coordinates
         {
@@ -85,14 +101,15 @@ public class RMapGenorator : MonoBehaviour
         return (xCoord, yCoord);
     }
 
-    private void MakeDistanceFromEndArray(Room roomStart)
+    private MakeDistanceFromEndArray(int xstart, int ystart, int xend, int yend)
     {
-        visitingTile = roomStart;
+        
     }
 }
 
 public class Room
 {
+    internal List<ObjectLocation> doors;
     int _x;
     int _y;
     List<ObjectLocation> _doors;
