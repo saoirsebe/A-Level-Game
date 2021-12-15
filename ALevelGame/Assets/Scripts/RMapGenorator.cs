@@ -26,6 +26,7 @@ public class RMapGenorator : MonoBehaviour
     private int yend;
     private bool roomsLeft = true;
 
+
     public void AddToRoomsList(Room room)
     {
         roomsList.Add(room);
@@ -64,14 +65,30 @@ public class RMapGenorator : MonoBehaviour
         {
             xstart = door._x;
             ystart = door._y;
-            PickEnd(roomSt, xstart, ystart);
+            PickEnd(xstart, ystart, rand);
+            //del door
         }
         return;
     }
 
-    private void PickEnd(Room startRoomObj, int xstart, int ystart)
+    private void PickEnd(int xstart, int ystart, int rand)
     {
-        throw new NotImplementedException();
+        int rand2;
+        do
+        {
+            rand2 = Random.Range(0, roomsList.Count);
+        } while (rand2 == rand);
+
+        Room roomSt = roomsList[rand2];
+        List<ObjectLocation> doorsn = roomSt.doors;
+
+        int rand3;
+        rand3 = Random.Range(0, doorsn.Count);
+        ObjectLocation doorEnd = doorsn[rand3];
+        xend = doorEnd._x;
+        yend = doorEnd._y;
+
+        MakeDistanceFromEndArray(xstart,ystart,xend,yend);
     }
 
     public void MakeWeightToMoveArray()
@@ -85,7 +102,13 @@ public class RMapGenorator : MonoBehaviour
         
     }
 
-    private (int xstart,int ystart) GetChildObject(Transform parent, string _tag)
+
+    private void MakeDistanceFromEndArray(int xstart, int ystart, int xend, int yend)
+    {
+        
+    }
+
+    private (int xstart, int ystart) GetChildObject(Transform parent, string _tag)
     {
         for (int i = 0; i < parent.childCount; i++) //for each child of start room, if game tag == "Door" then return x and y coordinates
         {
@@ -99,11 +122,6 @@ public class RMapGenorator : MonoBehaviour
             }
         }
         return (xCoord, yCoord);
-    }
-
-    private MakeDistanceFromEndArray(int xstart, int ystart, int xend, int yend)
-    {
-        
     }
 }
 
