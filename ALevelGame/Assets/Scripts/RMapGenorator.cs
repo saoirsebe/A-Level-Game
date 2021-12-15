@@ -24,6 +24,7 @@ public class RMapGenorator : MonoBehaviour
     private int ystart;
     private int xend;
     private int yend;
+    private bool roomsLeft = true;
 
     public void AddToRoomsList(Room room)
     {
@@ -48,30 +49,29 @@ public class RMapGenorator : MonoBehaviour
             }
         }
 
-
-        if (roomsMade == 9)
+        while (roomsMade==9 & roomsLeft)
         {
-            startRoomObj = GameObject.FindGameObjectWithTag("StartRoom");
-            Transform startRoomTrans = startRoomObj.transform;
-            string tag = "Door";
-            (xstart, ystart) = GetChildObject(startRoomTrans, tag);
-            PickEnd(startRoomObj, xstart, ystart);
+            PickStart();
         }
+    }
 
+    private PickStart()
+    {
+        int rand = Random.Range(0, roomsList.Count);
+        Room roomSt = roomsList[rand];
+        List<ObjectLocation> doorsn = roomSt.doors;
+        foreach(var door in doorsn)
+        {
+            xstart = door._x;
+            ystart = door._y;
+            PickEnd(roomSt, xstart, ystart);
+        }
+        return;
     }
 
     private void PickEnd(Room startRoomObj, int xstart, int ystart)
     {
         throw new NotImplementedException();
-    }
-
-    private PickStart ()
-    {
-        int rand = Random.Range(0, roomsList.Count);
-        Room roomn = roomsList[rand];
-        List<ObjectLocation> doorsn = roomn.doors;
-
-        MakeDistanceFromEndArray(xstart, ystart, xend, yend);
     }
 
     public void MakeWeightToMoveArray()
